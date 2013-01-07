@@ -14,8 +14,6 @@ var codeExtensionsDict = {
 }
 
 var themeDict = {
-	'Ambiance': 'ambiance', 
-	'Chaos': 'chaos', 
 	'Chrome': 'chrome', 
 	'Clouds': 'clouds', 
 	'Clouds Midnight' : 'clouds_midnight', 
@@ -26,7 +24,21 @@ var themeDict = {
 	'Eclipse': 'eclipse',
 	'Github': 'github',
 	'Idle Fingers' : 'idle_fingers',
-	'Monokai' : 'monokai'
+	'Monokai' : 'monokai',
+	'Merbivore' : 'merbivore',
+	'Merbivore Soft' : 'merbivore_soft',
+	'Mono Industrial' : 'mono_industrial',
+	'Pastel Dark' : 'pastel_on_dark',
+	'Solarized Dark' : 'solarized_dark',
+	'Solarized Light' : 'solarized_light',
+	'TextMate' : 'textmate',
+	'Tomorrow' : 'tomorrow',
+	'Tomorrow Night' : 'tomorrow_night',
+	'Tomorrow Night Blue' : 'tomorrow_night_blue',
+	'Tomorrow Night Bright' : 'tomorrow_night_bright',
+	'Tomorrow Night 80\'s' : 'tomorrow_night_eighties',
+	'Twilight' : 'twilight',
+	'Vibrant Ink' : 'vibrant_ink'
 };
 
 var pageType = wgPageName.split('.').pop();
