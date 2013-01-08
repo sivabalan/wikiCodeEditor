@@ -1,4 +1,4 @@
-page:User:Sivabalan.t/wikiCodeEditor/code-editor.js
+page:User:{{USERNAME}}/wikiCodeEditor/code-editor.js
 
 var codeExtensionsDict = {
 	'js' : {
