@@ -11,7 +11,7 @@ var codeExtensionsDict = {
 		'aceMode' : "ace/mode/css",
 		'fullName' : 'css'
 	}
-}
+};
 
 var themeDict = {
 	'Chrome': 'chrome', 
@@ -62,7 +62,7 @@ if(pageType in codeExtensionsDict)
 		
 		var codeArea = $('pre.'+codeExtensionsDict[pageType]['fullName']+'.source-'+codeExtensionsDict[pageType]['fullName']);
 		var codeContent = codeArea.text();
-		codeArea.replaceWith('<div id="toolBar"></div><div id="editor">'+codeContent+'</div>');	 		
+		codeArea.replaceWith('<div id="toolBar"></div><div id="editor">'+codeContent+'</div>');
 		$('#editor').css('position','relative');
 		$('#editor').css('width','100%');
 		$('#editor').css('height','500px');
@@ -74,7 +74,7 @@ if(pageType in codeExtensionsDict)
 		mw.loader.using('mediawiki.api.edit', function() {
 			$('#toolBar').html('<div class="codeEditOptions" style="position: relative;background-color: #F0F0F0;height: 30px;padding: 10px 10px 5px 10px;"><label style="float:left; line-height:24px">Editor theme : </label><select id="themeSelect" style="float: left; margin-left: 5px;margin-top: 3px;"></select><div class="editButtons" style="float: right;"><input id="wpCodeSave" type="submit" tabindex="5" value="Save" accesskey="s" title="Save your changes [alt-s]"><input id="wpCodeSaveDone" type="submit" tabindex="6" value="Save and close" accesskey="p" title="Save you changes and refresh the page [alt-p]"><span class="cancelLink"><a href="javascript:void(0)" title="Cancel edit" id="mw-editform-cancel">Cancel</a></span></div><input class="mw-summary" id="wpSummary" maxlength="255" tabindex="1" size="60" spellcheck="true" title="Enter a short summary [alt-b]" accesskey="b" name="wpSummary" placeholder="Enter a brief summary of your changes" style="margin-top: 3px;margin-right: 5px;width: 50%;float: right;height: 17px;"><!-- editButtons --></div>');
 
-			for(key in themeDict)
+			for(var key in themeDict)
 			{
 				$('#themeSelect').append('<option value="ace/theme/'+themeDict[key]+'">'+key+'</option>');
 			}
@@ -91,7 +91,7 @@ if(pageType in codeExtensionsDict)
 					title: mw.config.get('wgPageName'),
 					text: editor.getSession().getValue(),
 					summary: $('#wpSummmary').val()
-				}
+				};
 				edit.postWithEditToken(params).done(function(data){
 					if(('edit' in data) && (data.edit.result == 'Success')){
 						mw.util.jsMessage('Your code is saved');
