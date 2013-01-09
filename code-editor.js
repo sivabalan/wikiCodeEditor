@@ -121,7 +121,7 @@ if(pageType in codeExtensionsDict)
 
 	});
 	
-	$.getScript("http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js", function(data, textStatus, jqxhr) {
+	$.getScript("//d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js", function(data, textStatus, jqxhr) {
 			editCodeLink.css('pointer-events','auto');
 			editCodeLink.css('color','');	
 		});
