@@ -61,14 +61,14 @@ if(pageType in codeExtensionsDict)
 		$('#p-views li[id="ca-edit"]').addClass("selected");
 		
 		var codeArea = $('pre.'+codeExtensionsDict[pageType]['fullName']+'.source-'+codeExtensionsDict[pageType]['fullName']);
-		var codeContent = codeArea.text();
+		var codeContent = escape(codeArea.text());
 		codeArea.replaceWith('<div id="toolBar"></div><div id="editor"></div>');
 		$('#editor').css('position','relative');
 		$('#editor').css('width','100%');
 		$('#editor').css('height','500px');
 
 		editor = ace.edit("editor");
-		editor.setValue(codeContent);
+		editor.setValue(unescape(codeContent));
 		editor.setTheme("ace/theme/monokai");
 		editor.getSession().setMode(codeExtensionsDict[pageType]['aceMode']);
 
