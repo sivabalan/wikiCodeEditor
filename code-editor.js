@@ -1,5 +1,6 @@
 /* page: User:{{USERNAME}}/wikiCodeEditor/code-editor.js */
-
+$(function() {
+    
 var codeExtensionsDict = {
 	'js' : {
 		'urlStub' : "#editJs",
@@ -73,17 +74,29 @@ if(pageType in codeExtensionsDict)
 		editor.getSession().setMode(codeExtensionsDict[pageType]['aceMode']);
 
 		mw.loader.using('mediawiki.api.edit', function() {
-			$('#toolBar').html('<div class="codeEditOptions" style="position: relative;background-color: #F0F0F0;height: 30px;padding: 10px 10px 5px 10px;"><label style="float:left; line-height:24px">Editor theme : </label><select id="themeSelect" style="float: left; margin-left: 5px;margin-top: 3px;"></select><div class="editButtons" style="float: right;"><input id="wpCodeSave" type="submit" tabindex="5" value="Save" accesskey="s" title="Save your changes [alt-s]"><input id="wpCodeSaveDone" type="submit" tabindex="6" value="Save and close" accesskey="p" title="Save you changes and refresh the page [alt-p]"><span class="cancelLink"><a href="javascript:void(0)" title="Cancel edit" id="mw-editform-cancel">Cancel</a></span></div><input class="mw-summary" id="wpSummary" maxlength="255" tabindex="1" size="60" spellcheck="true" title="Enter a short summary [alt-b]" accesskey="b" name="wpSummary" placeholder="Enter a brief summary of your changes" style="margin-top: 3px;margin-right: 5px;width: 50%;float: right;height: 17px;"><!-- editButtons --></div>');
+			$('#toolBar').html('<div class="codeEditOptions" style="position: relative;background-color: #F0F0F0;height: 30px;padding: 10px 10px 5px 10px;"><label style="float:left; line-height:24px">Editor theme : </label><select id="themeSelect" style="float: left; margin-left: 5px;margin-top: 3px;"></select><div id="jshint" style="margin-left: 5px;float: left;display: none"><input type="button" value="jsHint"></div><div class="editButtons" style="float: right;"><input id="wpCodeSave" type="submit" tabindex="5" value="Save" accesskey="s" title="Save your changes [alt-s]"><input id="wpCodeSaveDone" type="submit" tabindex="6" value="Save and close" accesskey="p" title="Save you changes and refresh the page [alt-p]"><span class="cancelLink"><a href="javascript:void(0)" title="Cancel edit" id="mw-editform-cancel">Cancel</a></span></div><input class="mw-summary" id="wpSummary" maxlength="255" tabindex="1" size="60" spellcheck="true" title="Enter a short summary [alt-b]" accesskey="b" name="wpSummary" placeholder="Enter a brief summary of your changes" style="margin-top: 3px;margin-right: 5px;width: 50%;float: right;height: 17px;"><!-- editButtons --></div>');
 
 			for(var key in themeDict)
 			{
 				$('#themeSelect').append('<option value="ace/theme/'+themeDict[key]+'">'+key+'</option>');
 			}
 
-			$('#themeSelect').change(function(){
-				var themeString = $('#themeSelect').val();
-				editor.setTheme(themeString.toString());
-			});
+		    $('#themeSelect').change(function(){
+			var themeString = $('#themeSelect').val();
+			editor.setTheme(themeString.toString());
+		    });
+                    if (wgPageName.match(/js$/g))
+                        {
+                            $('#jshint').css('display','');
+                        }
+                    $('#jshint').click(function() {
+                        var result = JSHINT(editor.getValue());
+                        if (result === false)
+                            {
+                                var jerrors = $(JSHINT.errors);
+                                jerrors.each( function (index) { console.log("Line "+ this.line + ", " + this.evidence + ",Reason: " + this.reason); });
+                            }
+                    });
 
 			function saveCode(action) {
 				var edit = new mw.Api();
@@ -127,7 +140,13 @@ if(pageType in codeExtensionsDict)
 			editCodeLink.css('color','');	
 		});
 	
+    if (wgPageName.match(/js$/g))
+    {
+
+        $.getScript("//www.jshint.com/src/js/jshint.js",function(data,textStatus,jqxhr)
+                    {
+                        console.log("Loaded2");
+                    });
+    }
 }
-
-	
-
+});
