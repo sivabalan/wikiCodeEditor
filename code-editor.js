@@ -94,7 +94,17 @@ if(pageType in codeExtensionsDict)
                         if (result === false)
                             {
                                 var jerrors = $(JSHINT.errors);
-                                jerrors.each( function (index) { console.log("Line "+ this.line + ", " + this.evidence + ",Reason: " + this.reason); });
+                                var NewDialog = $('<div id="MenuDialog" title="jsHint"></div>');
+                                jerrors.each( function (index) { 
+                                    var error = "Line "+ this.line + ", " + this.evidence + ",Reason: " + this.reason;
+                                    NewDialog.append("<p>"+error+"</p>");
+                                });
+                                NewDialog.dialog()
+                            }
+                        else
+                            {
+                                var NewDialog = $('<div id="MenuDialog" title="jsHint"><p>Good code. No errors!!</p></div>');
+                                NewDialog.dialog();
                             }
                     });
 
