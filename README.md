@@ -5,7 +5,7 @@ Code editor for MediWiki js and css pages
 
 How to Use it ?
 ---------------
-1) Deploy code-editor.js into your common.js
+1. Deploy code-editor.js into your common.js
 
 License
 -------
