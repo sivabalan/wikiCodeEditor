@@ -12,7 +12,7 @@ Features
 ---------
 1. Built on top of ACE Editor.
 2. Supports JS/CSS editing for Developers. Other modes can be enabled easily if needed.
-3. jsHint Availability!!
+3. jsHint Available while editing JavaScript pages.
 
 License
 -------
