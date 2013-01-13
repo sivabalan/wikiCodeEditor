@@ -1,7 +1,7 @@
 wikiCodeEditor
 ---------------
 
-Code editor for MediWiki js and css pages
+Code editor for MediaWiki js and css pages
 
 ![Code Editor in Action](https://github.com/psibi/wikiCodeEditor/raw/gh-pages/images/snap1.png)
 How to Use it ?
